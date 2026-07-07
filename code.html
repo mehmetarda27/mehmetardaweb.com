@@ -5,6 +5,8 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="google-site-verification" content="Q7jVweqC6HefvRfs_akpv8vuu2K5SNcRnnMiAbNSvjY"/>
 <title>Mehmet Arda Web Tasarım | Dijital Sanat ve Teknoloji</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg"/>
+<link rel="apple-touch-icon" href="assets/logo.svg"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -137,13 +139,14 @@
         }
     </script>
 </head>
-<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<body id="top" class="bg-surface text-on-surface font-body-md overflow-x-hidden">
 <!-- TopNavBar -->
 <header class="docked full-width top-0 sticky z-50 bg-white/70 dark:bg-black/70 backdrop-blur-md shadow-[0_10px_15px_-3px_rgba(15,23,42,0.05)]">
 <nav class="flex justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-4">
-<div class="font-display-lg text-headline-md font-extrabold tracking-tighter text-on-surface dark:text-inverse-on-surface">
-                Mehmet Arda
-            </div>
+<a class="flex items-center gap-3 shrink-0 text-on-surface dark:text-inverse-on-surface" href="#top" aria-label="Mehmet Arda ana sayfa">
+<img class="h-10 w-10 rounded-xl shadow-sm" src="assets/logo.svg" alt="" width="40" height="40"/>
+<span class="font-display-lg text-headline-md font-extrabold tracking-tighter">Mehmet Arda</span>
+</a>
 <div class="hidden md:flex items-center space-x-8">
 <a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors" href="#services">Services</a>
 <a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors" href="#portfolio">Portfolio</a>
