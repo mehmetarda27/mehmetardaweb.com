@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="google-site-verification" content="Q7jVweqC6HefvRfs_akpv8vuu2K5SNcRnnMiAbNSvjY"/>
+<title>Mehmet Arda Web Tasarım | Dijital Sanat ve Teknoloji</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .dark .glass-card {
+            background: rgba(19, 27, 46, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .portfolio-hover:hover .portfolio-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface": "#f8f9ff",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#d8e2ff",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#2170e4",
+                        "surface-tint": "#565e74",
+                        "primary-fixed": "#dae2fd",
+                        "surface-variant": "#d3e4fe",
+                        "on-secondary-fixed-variant": "#004395",
+                        "secondary": "#0058be",
+                        "tertiary-fixed": "#ffddb8",
+                        "surface-container": "#e5eeff",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#001a42",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#0b1c30",
+                        "on-tertiary-fixed": "#2a1700",
+                        "tertiary-container": "#2a1700",
+                        "outline": "#76777d",
+                        "tertiary": "#000000",
+                        "primary-fixed-dim": "#bec6e0",
+                        "inverse-primary": "#bec6e0",
+                        "primary": "#000000",
+                        "primary-container": "#131b2e",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#fefcff",
+                        "outline-variant": "#c6c6cd",
+                        "on-primary-fixed": "#131b2e",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#213145",
+                        "on-tertiary-container": "#b87500",
+                        "surface-dim": "#cbdbf5",
+                        "on-surface-variant": "#45464d",
+                        "background": "#f8f9ff",
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-error": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "surface-container-low": "#eff4ff",
+                        "on-primary-container": "#7c839b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "section-padding": "120px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "margin-mobile": "20px",
+                        "gutter": "32px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "display-lg-mobile": ["Montserrat"],
+                        "headline-xl": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="docked full-width top-0 sticky z-50 bg-white/70 dark:bg-black/70 backdrop-blur-md shadow-[0_10px_15px_-3px_rgba(15,23,42,0.05)]">
+<nav class="flex justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-4">
+<div class="font-display-lg text-headline-md font-extrabold tracking-tighter text-on-surface dark:text-inverse-on-surface">
+                Mehmet Arda
+            </div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors" href="#services">Services</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors" href="#portfolio">Portfolio</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors" href="#pricing">Pricing</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors" href="#contact">Contact</a>
+</div>
+<button type="button" data-scroll-target="#contact" class="bg-primary text-on-primary font-label-md text-label-md px-6 py-2.5 rounded-full hover:bg-secondary-container transition-all duration-300 active:scale-95">
+                Start Project
+            </button>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center overflow-hidden pt-20">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-br from-surface to-surface-container-high opacity-90"></div>
+<!-- Abstract Background Mesh -->
+<div class="absolute top-0 right-0 w-1/2 h-full bg-secondary/5 rounded-full blur-[120px] translate-x-1/2 -translate-y-1/2"></div>
+<div class="absolute bottom-0 left-0 w-1/3 h-1/2 bg-primary/5 rounded-full blur-[100px] -translate-x-1/4 translate-y-1/4"></div>
+</div>
+<div class="relative z-10 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center">
+<div class="reveal">
+<span class="inline-block px-4 py-1.5 mb-6 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-md text-label-md uppercase tracking-widest">
+                        Dijital Sanatçı
+                    </span>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-6 leading-tight">
+                        Dijital Dünyadaki İzini <span class="text-secondary">Birlikte Tasarlayalım</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl">
+                        Modern, hızlı ve dönüşüm odaklı web çözümleriyle markanızı geleceğe taşıyoruz. Sadece bir web sitesi değil, yaşayan bir dijital kimlik inşa ediyoruz.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button type="button" data-scroll-target="#contact" class="bg-primary text-on-primary font-label-md text-label-md px-10 py-4 rounded-xl hover:bg-secondary transition-all shadow-xl shadow-primary/10 active:scale-95">
+                            Hemen Başla
+                        </button>
+<button type="button" data-scroll-target="#portfolio" class="border-2 border-secondary text-secondary font-label-md text-label-md px-10 py-4 rounded-xl hover:bg-secondary/5 transition-all active:scale-95">
+                            Çalışmalarımız
+                        </button>
+</div>
+</div>
+<div class="relative reveal delay-200 mt-12 lg:mt-0">
+<div class="relative glass-card p-4 rounded-[2rem] shadow-2xl overflow-hidden border-outline-variant/30">
+<img class="w-full h-auto rounded-xl" data-alt="A premium, ultra-modern web design dashboard interface with glassmorphism elements, vibrant blue and deep midnight highlights, showcased on a high-end sleek laptop. The scene is shot in a bright, airy office with soft sunlight streaming in, creating a clean corporate modernism aesthetic. Meticulous detail on UI components and typography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbrIkEHxGeHEREu4vrbEKQBH-tF5OwpUp-B7TqTwqt6ksDEtwHWnH36SVIOiwTdebZlnHVugqRzzo1lnF0kCmWXWeU2zBucdTkutxoevL86-qpg-liqwolqoCKbIJz8sFUXioXd5pUpsBLlQ0WcU5EQKittEhXunEEfsJJLkw2Umb2jEwdeeih3j7yBPJBp6Pr-lvBKS3vl1bnpeQCg3f_NF-7CQG_h-CLD1elRdFcNMM_HLon48banA"/>
+</div>
+<!-- Decorative Floating Element -->
+<div class="absolute -bottom-10 -left-10 glass-card p-6 rounded-2xl shadow-xl hidden md:block">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface">Yüksek Performans</p>
+<p class="text-[12px] text-on-surface-variant">Lighthouse Score: 99+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Section -->
+<section class="py-section-padding bg-surface-container-low" id="services">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-20 reveal">
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-4">Hizmetlerimiz</h2>
+<div class="w-20 h-1.5 bg-secondary mx-auto rounded-full mb-6"></div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                        İşletmenizin dijital dönüşüm yolculuğunda ihtiyacı olan tüm uzmanlık bir arada.
+                    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Service 1 -->
+<div class="glass-card p-8 rounded-[1.5rem] group hover:-translate-y-2 transition-all duration-300 reveal delay-100">
+<div class="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary mb-8 group-hover:bg-secondary group-hover:text-white transition-all">
+<span class="material-symbols-outlined text-4xl">web</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Kurumsal Web Tasarım</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+                            Markanızın prestijini dijital dünyaya yansıtan, modern ve özgün tasarımlar.
+                        </p>
+<a class="text-secondary font-label-md text-label-md flex items-center gap-2 group-hover:gap-4 transition-all" href="#contact">
+                            Detaylı Bilgi <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<!-- Service 2 -->
+<div class="glass-card p-8 rounded-[1.5rem] group hover:-translate-y-2 transition-all duration-300 reveal delay-200">
+<div class="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary mb-8 group-hover:bg-secondary group-hover:text-white transition-all">
+<span class="material-symbols-outlined text-4xl">shopping_cart</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">E-ticaret Çözümleri</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+                            Kullanıcı dostu, güvenli ve satış odaklı online mağaza deneyimleri.
+                        </p>
+<a class="text-secondary font-label-md text-label-md flex items-center gap-2 group-hover:gap-4 transition-all" href="#contact">
+                            Detaylı Bilgi <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<!-- Service 3 -->
+<div class="glass-card p-8 rounded-[1.5rem] group hover:-translate-y-2 transition-all duration-300 reveal delay-300">
+<div class="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary mb-8 group-hover:bg-secondary group-hover:text-white transition-all">
+<span class="material-symbols-outlined text-4xl">trending_up</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">SEO & Dijital Pazarlama</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+                            Arama motorlarında görünürlüğünüzü artırarak hedef kitlenize ulaşın.
+                        </p>
+<a class="text-secondary font-label-md text-label-md flex items-center gap-2 group-hover:gap-4 transition-all" href="#contact">
+                            Detaylı Bilgi <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<!-- Service 4 -->
+<div class="glass-card p-8 rounded-[1.5rem] group hover:-translate-y-2 transition-all duration-300 reveal delay-400">
+<div class="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary mb-8 group-hover:bg-secondary group-hover:text-white transition-all">
+<span class="material-symbols-outlined text-4xl">code</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Özel Yazılım</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+                            İş süreçlerinizi optimize eden, ihtiyaca özel geliştirilmiş web uygulamaları.
+                        </p>
+<a class="text-secondary font-label-md text-label-md flex items-center gap-2 group-hover:gap-4 transition-all" href="#contact">
+                            Detaylı Bilgi <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Portfolio Section -->
+<section class="py-section-padding" id="portfolio">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
+<div class="max-w-xl">
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-4">Başarı Hikayelerimiz</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                            Her projemizde kaliteyi ve estetiği en ön planda tutarak, müşterilerimize değer katan dijital ürünler ortaya çıkarıyoruz.
+                        </p>
+</div>
+<button type="button" data-scroll-target="#portfolio" class="hidden md:flex items-center gap-2 text-secondary font-label-md text-label-md border-b-2 border-secondary pb-1 hover:gap-4 transition-all">
+                        Tüm Projeleri Gör <span class="material-symbols-outlined">north_east</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 reveal">
+<!-- Mosaic Item 1 -->
+<div class="md:col-span-8 group portfolio-hover relative overflow-hidden rounded-[2rem] aspect-video md:aspect-[16/9]">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A luxury interior design website showcase featuring elegant serif typography and high-resolution photography of a modern minimalist living room. The website interface is clean with ample white space, showcasing high-end furniture. Styled with premium deep slate and gold accents to match a high-end agency portfolio aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4vZK2iMhnEHylzsNtz_xVRJyWVMoPex8pZyjTc-Rbvu9arF9btmUKzsYxBZZZ5kvpvDZAmAEMjee3AtDhte-JBRzI20-b_4KaByrgYhIp08XImKo7knUHh2oZyHSwMD6pTcsWvOFKRmtbR530sUQDny1VKT8EbRoPq1KsQEFBVqPzW4X8GXxQSKpFsk_XQmi6hzlgt2UhNpUcrOX-UYJSYbZCqXuEfSL0a-Xy-WP7OQaQu7DNA1hKIA"/>
+<div class="portfolio-overlay absolute inset-0 bg-primary/80 backdrop-blur-sm opacity-0 translate-y-4 transition-all duration-500 flex flex-col justify-end p-10">
+<p class="text-secondary-fixed font-label-md text-label-md mb-2 uppercase">Lüks & İç Mimari</p>
+<h4 class="text-white font-headline-xl text-headline-xl mb-6">Luxe Interior</h4>
+<button type="button" data-scroll-target="#contact" class="w-fit bg-white text-primary font-label-md text-label-md px-6 py-3 rounded-xl hover:bg-secondary hover:text-white transition-all">Siteyi İncele</button>
+</div>
+</div>
+<!-- Mosaic Item 2 -->
+<div class="md:col-span-4 group portfolio-hover relative overflow-hidden rounded-[2rem] aspect-square md:aspect-auto h-full">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A high-tech SaaS platform landing page called TechFlow, featuring complex data visualizations, dark mode UI design, and vibrant electric blue accents. The design looks futuristic and enterprise-grade, with glassmorphism dashboard components. Part of a premium agency web design portfolio." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB9b37XKikopiu7T_2OWMnRCln0VyTnkxw4AQNCfda8FyGjCrLWvSFZvG3Kc0G79Tamxjl0s3vVwGjnSSNpa0A-DgbVrEPaQiOMIvEFRfhJHJd4Kr3XAVGj2kEh0i1VpC22E9CBq75Q0FxQIFwlrmojfTkOXkd1eMhBMyuXmAcfJ5_VXUeuL2VWihlbh_TNAxIZ529HMH7z68z4FUzA1LCVTtLI-4NBay9E9qmswzUorcOaV9gLX-meA"/>
+<div class="portfolio-overlay absolute inset-0 bg-secondary/80 backdrop-blur-sm opacity-0 translate-y-4 transition-all duration-500 flex flex-col justify-end p-8">
+<p class="text-white/80 font-label-md text-label-md mb-2 uppercase">Yazılım & SaaS</p>
+<h4 class="text-white font-headline-lg text-headline-lg mb-4">TechFlow SaaS</h4>
+<button type="button" data-scroll-target="#contact" class="w-fit border border-white text-white font-label-md text-label-md px-5 py-2.5 rounded-xl hover:bg-white hover:text-secondary transition-all">Detaylar</button>
+</div>
+</div>
+<!-- Mosaic Item 3 -->
+<div class="md:col-span-4 group portfolio-hover relative overflow-hidden rounded-[2rem] aspect-square">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="An organic e-commerce grocery store website interface with fresh green color palettes, friendly bold typography, and crisp product photography of fresh vegetables. The UI feels clean, trustworthy, and modern, designed for a high-converting shopping experience. Displayed in a professional web design portfolio." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAipiJpouwtSEYzwkFn59pMak3zQ6BYox8kLhUmUIVJ9BhKKMpttFVpRi22CnoG6XbWcplBTp_2qUKlZOSSaZdk4MvO-UbgFNNzCihXrIxKoC6PY71JWghDZhV7sF_2FqpnFsNXzjCASUqEAGNUjhgQyZ6bhKV3V2rCH4ytPthZdK8zeHt6qGmwqk_o9fUVTEQP_dYH_-wiYCCnzag9Y0fO4lZVKabKTyGUMkWevuSecX5Ot-2PnUcY-g"/>
+<div class="portfolio-overlay absolute inset-0 bg-green-900/80 backdrop-blur-sm opacity-0 translate-y-4 transition-all duration-500 flex flex-col justify-end p-8">
+<p class="text-white/80 font-label-md text-label-md mb-2 uppercase">E-Ticaret</p>
+<h4 class="text-white font-headline-lg text-headline-lg mb-4">Organic Green</h4>
+<button type="button" data-scroll-target="#contact" class="w-fit border border-white text-white font-label-md text-label-md px-5 py-2.5 rounded-xl hover:bg-white hover:text-green-900 transition-all">İncele</button>
+</div>
+</div>
+<!-- Mosaic Item 4 -->
+<div class="md:col-span-8 group portfolio-hover relative overflow-hidden rounded-[2rem] aspect-video md:aspect-auto h-full">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container to-secondary flex items-center justify-center p-12 overflow-hidden">
+<div class="text-center">
+<h3 class="text-white font-headline-xl text-headline-xl mb-6">Senin Hikayen Burada Başlayabilir</h3>
+<button type="button" data-scroll-target="#contact" class="bg-white text-primary font-label-md text-label-md px-10 py-4 rounded-xl hover:shadow-2xl transition-all">Projeni Başlat</button>
+</div>
+<!-- Decorative Circle -->
+<div class="absolute top-0 right-0 w-64 h-64 border-4 border-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Section -->
+<section class="py-section-padding bg-surface-container" id="pricing">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-20 reveal">
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-4">Paketlerimiz</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                        Her bütçeye ve ihtiyaca uygun, şeffaf fiyatlandırma politikamızla yanınızdayız.
+                    </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter items-center">
+<!-- Basic -->
+<div class="glass-card p-10 rounded-[2rem] reveal delay-100 h-fit">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Başlangıç</h3>
+<p class="text-on-surface-variant font-body-md mb-8">Küçük işletmeler için ideal.</p>
+<div class="text-display-lg-mobile font-bold text-on-surface mb-8">
+                            ₺9.900<span class="text-body-md font-normal text-on-surface-variant">/başlayan</span>
+</div>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-secondary">check_circle</span> 5 Sayfa Tasarım</li>
+<li class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-secondary">check_circle</span> Mobil Uyumlu</li>
+<li class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-secondary">check_circle</span> Temel SEO Altyapısı</li>
+<li class="flex items-center gap-3 text-outline-variant"><span class="material-symbols-outlined">cancel</span> E-ticaret Özellikleri</li>
+</ul>
+<button type="button" data-scroll-target="#contact" class="w-full border-2 border-secondary text-secondary font-label-md text-label-md py-4 rounded-xl hover:bg-secondary hover:text-white transition-all">Seç</button>
+</div>
+<!-- Professional (Featured) -->
+<div class="bg-primary-container p-10 rounded-[2.5rem] shadow-2xl reveal delay-200 lg:scale-110 relative overflow-hidden z-10">
+<div class="absolute top-8 right-8 bg-secondary px-4 py-1 rounded-full text-white text-[12px] font-bold uppercase tracking-wider">Popüler</div>
+<h3 class="font-headline-md text-headline-md text-white mb-2">Profesyonel</h3>
+<p class="text-on-primary-container font-body-md mb-8">Büyüyen markalar için en iyisi.</p>
+<div class="text-display-lg-mobile font-bold text-white mb-8">
+                            ₺19.900<span class="text-body-md font-normal text-on-primary-container">/başlayan</span>
+</div>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3 text-on-primary-container"><span class="material-symbols-outlined text-secondary-fixed">check_circle</span> Sınırsız Sayfa</li>
+<li class="flex items-center gap-3 text-on-primary-container"><span class="material-symbols-outlined text-secondary-fixed">check_circle</span> Özel Tasarım & İkonlar</li>
+<li class="flex items-center gap-3 text-on-primary-container"><span class="material-symbols-outlined text-secondary-fixed">check_circle</span> Gelişmiş SEO Yönetimi</li>
+<li class="flex items-center gap-3 text-on-primary-container"><span class="material-symbols-outlined text-secondary-fixed">check_circle</span> Blog & İçerik Yönetimi</li>
+<li class="flex items-center gap-3 text-on-primary-container"><span class="material-symbols-outlined text-secondary-fixed">check_circle</span> Google Analytics Entegrasyonu</li>
+</ul>
+<button type="button" data-scroll-target="#contact" class="w-full bg-secondary text-white font-label-md text-label-md py-4 rounded-xl hover:bg-secondary-container transition-all shadow-lg shadow-secondary/20">Hemen Başla</button>
+</div>
+<!-- Enterprise -->
+<div class="glass-card p-10 rounded-[2rem] reveal delay-300 h-fit">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Kurumsal</h3>
+<p class="text-on-surface-variant font-body-md mb-8">Tam teşekküllü dijital çözüm.</p>
+<div class="text-display-lg-mobile font-bold text-on-surface mb-8">
+                            Teklif Al
+                        </div>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-secondary">check_circle</span> E-ticaret Modülleri</li>
+<li class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-secondary">check_circle</span> API & 3. Parti Entegrasyonlar</li>
+<li class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-secondary">check_circle</span> 7/24 Teknik Destek</li>
+<li class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-secondary">check_circle</span> Yüksek Güvenlik Paketi</li>
+</ul>
+<button type="button" data-scroll-target="#contact" class="w-full border-2 border-secondary text-secondary font-label-md text-label-md py-4 rounded-xl hover:bg-secondary hover:text-white transition-all">İletişime Geç</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-section-padding" id="contact">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+<div class="reveal">
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-6">Bize Ulaşın</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-12">
+                            Hayalinizdeki projeyi gerçeğe dönüştürmek için sadece bir mesaj uzağınızdayız. Ekibimiz sizinle iletişime geçmekten mutluluk duyacaktır.
+                        </p>
+<div class="space-y-8">
+<div class="flex items-center gap-6">
+<div class="w-14 h-14 bg-surface-container flex items-center justify-center rounded-2xl text-secondary">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface-variant uppercase text-xs tracking-widest">E-posta</p>
+<p class="font-headline-md text-on-surface">info@mehmetarda.com</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="w-14 h-14 bg-surface-container flex items-center justify-center rounded-2xl text-secondary">
+<span class="material-symbols-outlined">call</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface-variant uppercase text-xs tracking-widest">Telefon</p>
+<p class="font-headline-md text-on-surface">+90 (531) 466 89 27</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="w-14 h-14 bg-surface-container flex items-center justify-center rounded-2xl text-secondary">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface-variant uppercase text-xs tracking-widest">Ofis</p>
+<p class="font-headline-md text-on-surface">Levent, İstanbul, TR</p>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-card p-10 rounded-[2.5rem] shadow-2xl reveal delay-200">
+<form id="contact-form" class="space-y-6" action="https://formspree.io/f/xzdlwnwy" method="POST">
+<div id="form-status" class="hidden rounded-xl px-4 py-3 text-sm font-semibold" role="status" aria-live="polite"></div>
+<input type="hidden" name="_subject" value="Mehmet Arda Web Tasarim - Yeni mesaj"/>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block font-label-md text-on-surface-variant mb-2">Adınız</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-xl px-4 py-3 focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all" placeholder="Adınız Soyadınız" type="text" name="name" autocomplete="name" required/>
+</div>
+<div>
+<label class="block font-label-md text-on-surface-variant mb-2">E-posta</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-xl px-4 py-3 focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all" placeholder="eposta@ornek.com" type="email" name="email" autocomplete="email" required/>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-on-surface-variant mb-2">Konu</label>
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-xl px-4 py-3 focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all" name="subject" required>
+<option>Yeni Web Tasarım Projesi</option>
+<option>E-ticaret Çözümü</option>
+<option>SEO Hizmetleri</option>
+<option>Diğer</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-on-surface-variant mb-2">Mesajınız</label>
+<textarea class="w-full bg-surface-container-low border border-outline-variant rounded-xl px-4 py-3 focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all" placeholder="Projenizden kısaca bahsedin..." rows="4" name="message" required></textarea>
+</div>
+<button type="submit" class="w-full bg-primary text-on-primary font-label-md text-label-md py-4 rounded-xl hover:bg-secondary transition-all shadow-lg active:scale-95 disabled:cursor-not-allowed disabled:opacity-70">Mesajı Gönder</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest dark:bg-primary-container border-t border-outline-variant dark:border-outline">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-padding">
+<div class="col-span-1 md:col-span-1">
+<div class="font-display-lg text-headline-md font-bold text-on-surface dark:text-inverse-on-surface mb-6">
+                    Mehmet Arda
+                </div>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant mb-8">
+                    Modern işletmeler için yüksek performanslı ve estetik dijital deneyimler tasarlıyoruz.
+                </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:text-secondary hover:border-secondary transition-all" href="#contact">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+</a>
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:text-secondary hover:border-secondary transition-all" href="#contact">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg>
+</a>
+</div>
+</div>
+<div class="col-span-1">
+<h4 class="font-headline-md text-headline-md text-on-surface dark:text-inverse-on-surface mb-6">Hızlı Linkler</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors underline decoration-transparent hover:decoration-secondary" href="#services">Hizmetler</a></li>
+<li><a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors underline decoration-transparent hover:decoration-secondary" href="#portfolio">Portfolyo</a></li>
+<li><a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors underline decoration-transparent hover:decoration-secondary" href="#pricing">Fiyatlandırma</a></li>
+<li><a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors underline decoration-transparent hover:decoration-secondary" href="#contact">Bize Ulaşın</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<h4 class="font-headline-md text-headline-md text-on-surface dark:text-inverse-on-surface mb-6">Hizmet Alanları</h4>
+<ul class="space-y-4">
+<li class="text-on-surface-variant dark:text-outline-variant">UI/UX Tasarımı</li>
+<li class="text-on-surface-variant dark:text-outline-variant">WordPress Geliştirme</li>
+<li class="text-on-surface-variant dark:text-outline-variant">Mobil Uygulama</li>
+<li class="text-on-surface-variant dark:text-outline-variant">Marka Kimliği</li>
+</ul>
+</div>
+<div class="col-span-1">
+<h4 class="font-headline-md text-headline-md text-on-surface dark:text-inverse-on-surface mb-6">Yasal</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors underline decoration-transparent hover:decoration-secondary" href="#contact">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors underline decoration-transparent hover:decoration-secondary" href="#contact">Terms of Service</a></li>
+<li><a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors underline decoration-transparent hover:decoration-secondary" href="#contact">Cookie Policy</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant">
+                © 2024 Mehmet Arda Web Tasarım. All rights reserved.
+            </p>
+<div class="flex items-center gap-2 text-on-surface-variant dark:text-outline-variant">
+<span class="material-symbols-outlined text-[18px]">language</span>
+<span class="text-label-md">Türkiye</span>
+</div>
+</div>
+</footer>
+<!-- SideNavBar (Floating WhatsApp) -->
+<div class="fixed bottom-8 right-8 z-50">
+<a class="bg-[#25D366] text-white rounded-full p-4 flex items-center justify-center shadow-2xl hover:scale-110 hover:shadow-primary/20 transition-all duration-300 active:scale-90 group relative" href="https://wa.me/905314668927?text=Merhaba%2C%20web%20tasar%C4%B1m%20hizmetiniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">
+<span class="material-symbols-outlined" data-icon="chat" style="font-variation-settings: 'FILL' 1;">chat</span>
+<span class="absolute right-full mr-4 bg-white text-on-surface py-2 px-4 rounded-xl text-label-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-lg hidden md:block">
+                WhatsApp ile Bize Yazın
+            </span>
+</a>
+</div>
+<script>
+        const scrollToTarget = (selector) => {
+            const target = document.querySelector(selector);
+            if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+        };
+
+        document.querySelectorAll("[data-scroll-target]").forEach((button) => {
+            button.addEventListener("click", () => scrollToTarget(button.dataset.scrollTarget));
+        });
+
+        const contactForm = document.querySelector("#contact-form");
+        const formStatus = document.querySelector("#form-status");
+        if (contactForm && formStatus) {
+            contactForm.addEventListener("submit", async (event) => {
+                event.preventDefault();
+                const submitButton = contactForm.querySelector("button[type=submit]");
+                const formData = new FormData(contactForm);
+                formStatus.className = "rounded-xl px-4 py-3 text-sm font-semibold bg-surface-container text-on-surface";
+                formStatus.textContent = "Mesajınız gönderiliyor...";
+                submitButton.disabled = true;
+
+                try {
+                    const response = await fetch(contactForm.action, {
+                        method: "POST",
+                        body: formData,
+                        headers: { "Accept": "application/json" }
+                    });
+
+                    if (!response.ok) throw new Error("Form gönderimi başarısız oldu.");
+
+                    contactForm.reset();
+                    formStatus.className = "rounded-xl px-4 py-3 text-sm font-semibold bg-green-100 text-green-800";
+                    formStatus.textContent = "Mesajınız alındı. En kısa sürede size dönüş yapacağız.";
+                } catch (error) {
+                    formStatus.className = "rounded-xl px-4 py-3 text-sm font-semibold bg-error-container text-on-error-container";
+                    formStatus.textContent = "Mesaj gönderilemedi. Lütfen bilgilerinizi kontrol edip tekrar deneyin.";
+                } finally {
+                    submitButton.disabled = false;
+                }
+            });
+        }
+
+        // Simple Scroll Reveal Implementation
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth header shadow on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-xl');
+            } else {
+                header.classList.remove('shadow-xl');
+            }
+        });
+    </script>
+</body></html>
